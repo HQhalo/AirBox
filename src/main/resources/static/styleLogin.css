@@ -1,5 +1,14 @@
+body{
+
+	 background: url(images/background.jpg) top center;
+  	background-size: cover;
+}
 .logo{
     margin: 50px;
+}
+.logo a {
+	color: black;
+  text-decoration: none; /* no underline */
 }
 .login-form {
     width: 340px;
