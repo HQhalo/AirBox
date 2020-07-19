@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+        <!--STYLESHEET-->
+        <!--=================================================-->
+    
+        <!--Open Sans Font [ OPTIONAL ]-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
+    
+    
+        <!--Bootstrap Stylesheet [ REQUIRED ]-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    
+        <!--Nifty Stylesheet [ REQUIRED ]-->
+        <link th:href="@{/styleDashboard.css}" rel="stylesheet">
+    
+    	
+        
+ 
+  </head>
+  <body>
+   	
+		<div id= "popUpUpload"class="frame">
+			<div class="center">
+				<div class="title">
+					<h1>Drop file to upload</h1>
+				</div>
+				<form method="POST" enctype="multipart/form-data" action="/file/upload-file">
+					<div class="dropzone">
+						<img src="http://100dayscss.com/codepen/upload.svg"
+							class="upload-icon" /> <input type="file" name="file" />
+					</div>
+					<input type="submit" class="btn btnup" value="Uploadfile" />
+					
+				</form>
+			</div>
+		</div>
+	
+    <div class="pad-all file-manager">
+        <div class="fixed-fluid">
+            <div class="fixed-sm-200 pull-sm-left file-sidebar">
+                <div class="bord-btm pad-btm">
+                    <a href="#" onclick="onclickPopUpUpload();" class="btn btn-block btn-lg btn-info v-middle">Upload Files</a>
+                </div>
+
+                <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">Bookmark</p>
+                <div class="list-group bg-trans pad-ver bord-btm">
+                    <a href="#" class="list-group-item"><i class="demo-pli-folder-with-document icon-lg icon-fw"></i> User Folders</a>
+                    <a href="#" class="list-group-item"><i class="demo-pli-camera-2 icon-lg icon-fw"></i> Photos</a>
+                    <a href="#" class="list-group-item"><i class="demo-pli-video icon-lg icon-fw"></i> Videos</a>
+                </div>
+
+
+                <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">Folders</p>
+                <div class="list-group bg-trans pad-btm bord-btm">
+                    <a href="#" class="list-group-item">
+                    <i class="demo-pli-folder icon-lg icon-fw"></i> ...
+                </a>
+                    <a href="#" class="list-group-item text-bold">
+                    <span class="text-main"><i class="demo-pli-folder-with-document icon-lg icon-fw"></i> Documents</span>
+                </a>
+                    <a href="#" class="list-group-item">
+                    <i class="demo-pli-folder icon-lg icon-fw"></i> Favorites
+                </a>
+                    <a href="#" class="list-group-item">
+                    <i class="demo-pli-folder icon-lg icon-fw"></i> Data
+                </a>
+                    <a href="#" class="list-group-item">
+                    <i class="demo-pli-folder icon-lg icon-fw"></i> PDF Docs
+                </a>
+                    <a href="#" class="list-group-item">
+                    <i class="demo-pli-folder icon-lg icon-fw"></i> Illustration
+                </a>
+                    <a href="#" class="list-group-item">
+                    <i class="demo-pli-folder icon-lg icon-fw"></i> Github
+                </a>
+                    <a href="#" class="list-group-item">
+                    <i class="demo-pli-folder icon-lg icon-fw"></i> Server
+                </a>
+                    <a href="#" class="list-group-item">
+                    <i class="demo-pli-folder icon-lg icon-fw"></i> Old Files
+                </a>
+                </div>
+
+
+                <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">Tags</p>
+                <ul class="list-inline mar-hor">
+                    <li class="tag tag-sm">
+                        <a href="#">Family</a>
+                    </li>
+                    <li class="tag tag-sm">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="tag tag-sm">
+                        <a href="#">Work</a>
+                    </li>
+                    <li class="tag tag-sm">
+                        <a href="#">Film</a>
+                    </li>
+                    <li class="tag tag-sm">
+                        <a href="#">Music</a>
+                    </li>
+                    <li class="tag tag-sm">
+                        <a href="#">Videos</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="fluid file-panel">
+                <div class="bord-btm pad-ver">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">App Views</a></li>
+                        <li class="active">File Manager</li>
+                    </ol>
+                </div>
+                
+                <ul id="demo-mail-list" class="file-list">
+
+					<!--File list item-->
+                    <li th:each="file : ${files}">
+                        <div class="file-control">
+                            <input id="file-list-9" class="magic-checkbox" type="checkbox">
+                            <label for="file-list-9"></label>
+                        </div>
+                        <div class="file-settings"><a href="#"><i class="pci-ver-dots"></i></a></div>
+                        <div class="file-attach-icon"></div>
+                        <a href="#" class="file-details">
+                            <div class="media-block">
+                                <div class="media-left"><i class="demo-pli-file-jpg"></i></div>
+                                <div class="media-body">
+                                    <p class="file-name" th:text="${file.name}"></p>
+                                    <small th:text="${file.size}"></small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script th:src="@{/js/dashboard.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

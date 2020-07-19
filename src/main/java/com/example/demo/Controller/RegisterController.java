@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.RegistrationForm;
+import com.example.demo.User;
 import com.example.demo.repository.UserRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,8 +29,11 @@ public class RegisterController {
 	}
 	
 	@GetMapping
-	public String registerForm() {
-		return "registration";
+	public String registerForm(@AuthenticationPrincipal User user) {
+		if(user == null)
+			return "registration";
+		else 
+			return "redirect:/dashboard";
 	}
 	
 	@PostMapping
